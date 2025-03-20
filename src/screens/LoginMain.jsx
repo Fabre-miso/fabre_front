@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const LoginMain = () => {
+const LoginMain = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* 메인 로고 */}
@@ -12,37 +12,36 @@ const LoginMain = () => {
       <TextInput placeholder="비밀번호" secureTextEntry style={styles.input} />
 
       {/* 로그인 버튼 */}
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate("MainTabs")}>
         <Text style={styles.loginText}>로그인</Text>
       </TouchableOpacity>
 
       {/* 구분선 OR */}
       <View style={styles.container2}>
         <Image source={require('../assets/image/line.png')} style={styles.line} resizeMode="contain"/>
-        <Text style={styles.orText}>Or </Text>
+        <Text style={styles.orText}>Or</Text>
         <Image source={require('../assets/image/line.png')} style={styles.line} resizeMode="contain"/>
       </View>
 
       {/* 추가 로그인 옵션 (구글, 전화번호) */}
       <View style={styles.socialLoginContainer}>
-        
         <TouchableOpacity style={styles.socialButton}>
-            <View style={styles.container2}>
-                <Image source={require('../assets/image/GoogleLogo.png')} style={styles.socialIcon} />
-                <Text style={styles.socialText}>Continue with Google</Text>
-            </View>
+          <View style={styles.container2}>
+            <Image source={require('../assets/image/GoogleLogo.png')} style={styles.socialIcon} />
+            <Text style={styles.socialText}>Continue with Google</Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.socialButton}>
-            <View style={styles.container2}>
-                <Image source={require('../assets/image/MobileLogo.png')} style={styles.socialIcon} />
-                <Text style={styles.socialText}>Continue with mobile number</Text>
-            </View>
+          <View style={styles.container2}>
+            <Image source={require('../assets/image/MobileLogo.png')} style={styles.socialIcon} />
+            <Text style={styles.socialText}>Continue with mobile number</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
       {/* 회원가입 페이지로 이동 */}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}>
         <Text style={styles.signupText}>회원가입</Text>
       </TouchableOpacity>
     </View>
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 14,
-    color: '#A3A3A3'
+    color: '#A3A3A3',
   },
   loginButton: {
     width: '100%',
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
   loginText: {
     color: '#fff',
     fontSize: 17,
-    fontFamily: 'OpenSans-Regular.ttf'
+    fontFamily: 'OpenSans-Regular.ttf',
   },
   orText: {
     fontSize: 14,
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   line: {
-    width: 150
+    width: 150,
   },
   socialLoginContainer: {
     width: '100%',
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 10,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   socialIcon: {
     width: 24,
@@ -122,14 +121,14 @@ const styles = StyleSheet.create({
   },
   socialText: {
     fontSize: 14,
-    color: '#262626'
+    color: '#262626',
   },
   signupText: {
     marginTop: 200,
     fontSize: 14,
-    color: '#3d3d3dx',
-    fontWeight: 400,
-    textDecorationLine: 'underline'
+    color: '#3d3d3d',
+    fontWeight: '400',
+    textDecorationLine: 'underline',
   },
 });
 
