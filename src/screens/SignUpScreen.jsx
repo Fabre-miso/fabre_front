@@ -1,164 +1,306 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
-import { CheckBox } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Alert,
+} from 'react-native';
+import { Linking } from 'react-native';
 
-const SignUpScreen = () => {
-  const [checkedItems, setCheckedItems] = useState({});
-  const navigation = useNavigation();
+const SignUpScreen = ({ navigation }) => {
+  // 사용자 입력 상태 관리
+  const [form, setForm] = useState({ id: '', password: '', phone: '', code: '' });
+  // 약관 동의 체크 상태 관리
+  const [checked, setChecked] = useState({});
 
-  const toggleCheck = (key) => {
-    setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
+  // 입력 필드 변경 핸들러
+  const handleInputChange = (field, value) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  // 약관 체크박스 토글
+  const toggleAgreement = (key) => {
+    setChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  // 회원가입 완료 처리
+  const handleSubmit = () => {
+    Alert.alert('회원가입 완료', '회원가입이 성공적으로 완료되었습니다.');
+    navigation.navigate('Login');
+  };
+
+  // 약관 항목 목록
+  const terms = [
+    { text: '(필수) 서비스 이용약관 동의', link: true },
+    { text: '(필수) 개인정보 수집 및 이용 동의', link: true },
+    { text: '(필수) 만 14세 이상', link: false },
+    { text: '(선택) 마케팅 수신 동의', link: false },
+    { text: '약관에 모두 동의', link: false },
+  ];
+
   return (
-    <ScrollView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {/* 상단 헤더 영역 */}
+      <View style={styles.headerRow}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.backButton}>⬅</Text>
+          <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>회원가입</Text>
+        <Text style={styles.title}>회원가입</Text>
       </View>
 
-      {/* Input Fields */}
-      <Text style={styles.label}>아이디</Text>
-      <View style={styles.inputRow}>
-        <TextInput style={styles.input} placeholder="아이디를 입력해주세요" placeholderTextColor="#9E9E9E" />
-        <TouchableOpacity style={styles.disabledButton}>
-          <Text style={styles.disabledButtonText}>중복확인</Text>
-        </TouchableOpacity>
-      </View>
+      {/* 헤더 아래 여백 */}
+      <View style={styles.spacerLargeMore} />
 
-      <Text style={styles.label}>비밀번호</Text>
-      <TextInput style={styles.input} placeholder="비밀번호는 8자 이상, 특수기호 포함해주세요(@, #, !)" placeholderTextColor="#9E9E9E" secureTextEntry />
-
-      <Text style={styles.label}>휴대폰 번호</Text>
-      <View style={styles.inputRow}>
-        <TextInput style={styles.input} keyboardType="phone-pad" placeholder="01012345678" placeholderTextColor="#9E9E9E" />
-        <TouchableOpacity style={styles.disabledButton}>
-          <Text style={styles.disabledButtonText}>인증받기</Text>
-        </TouchableOpacity>
-      </View>
-
-      <Text style={styles.label}>인증번호</Text>
-      <TextInput style={styles.input} placeholder="인증번호 4자리" keyboardType="numeric" placeholderTextColor="#9E9E9E" />
-
-      {/* 약관 동의 */}
-      <Text style={styles.label}>약관 동의</Text>
-      {[
-        { text: "(필수) 서비스 이용약관 동의", link: "내려보기" },
-        { text: "(필수) 개인정보 수집 및 이용 동의", link: "내려보기" },
-        { text: "(필수) 만 14세 이상" },
-        { text: "(선택) 마케팅 수신 동의" },
-        { text: "약관에 모두 동의" },
-      ].map((item, index) => (
-        <View key={index} style={styles.checkBoxRow}>
-          <Text style={styles.checkBoxIcon}>📜</Text>
-          <CheckBox
-            title={
-              <Text>
-                {item.text} {item.link && <Text style={styles.linkText}>{item.link}</Text>}
-              </Text>
-            }
-            checked={checkedItems[item.text] || false}
-            onPress={() => toggleCheck(item.text)}
-            containerStyle={styles.checkBox}
-            textStyle={styles.checkBoxText}
+      {/* 입력 폼 영역 */}
+      <View style={styles.formSection}>
+        {/* 아이디 입력 */}
+        <Text style={styles.label}>아이디</Text>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.input230}
+            placeholder="아이디를 입력해주세요"
+            placeholderTextColor="#A3A3A3"
+            value={form.id}
+            onChangeText={(text) => handleInputChange('id', text)}
           />
+          <TouchableOpacity style={styles.buttonGray}>
+            <Text style={styles.buttonTextGray}>중복확인</Text>
+          </TouchableOpacity>
         </View>
-      ))}
+
+        {/* 비밀번호 입력 */}
+        <Text style={styles.label}>비밀번호</Text>
+        <TextInput
+          style={styles.inputFull}
+          placeholder="비밀번호는 8자 이상, 특수기호 포함해주세요(@, #, !)"
+          placeholderTextColor="#A3A3A3"
+          secureTextEntry
+          value={form.password}
+          onChangeText={(text) => handleInputChange('password', text)}
+        />
+
+        {/* 휴대폰 번호 입력 */}
+        <Text style={styles.label}>휴대폰 번호</Text>
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.input230}
+            placeholder="01012345678"
+            placeholderTextColor="#A3A3A3"
+            keyboardType="phone-pad"
+            value={form.phone}
+            onChangeText={(text) => handleInputChange('phone', text)}
+          />
+          <TouchableOpacity style={styles.buttonGray}>
+            <Text style={styles.buttonTextGray}>인증받기</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* 인증번호 입력 */}
+        <Text style={styles.label}>인증번호</Text>
+        <TextInput
+          style={styles.inputFull}
+          placeholder="인증번호 4자리"
+          placeholderTextColor="#A3A3A3"
+          keyboardType="numeric"
+          value={form.code}
+          onChangeText={(text) => handleInputChange('code', text)}
+        />
+      </View>
+
+      {/* 약관 동의 영역 */}
+      <View style={styles.termsSection}>
+        {/* 제목과 구분선 */}
+        <View style={styles.termsDividerRow}>
+          <View style={styles.divider} />
+          <Text style={styles.termsTitle}>약관 동의</Text>
+          <View style={styles.divider} />
+        </View>
+
+        {/* 약관 항목 리스트 */}
+        <View style={styles.termsContentWrapperImprovedAligned}>
+          {terms.map((item, idx) => (
+            <View key={idx} style={styles.termsRowLeftAligned}>
+              <TouchableOpacity onPress={() => toggleAgreement(item.text)} style={styles.circleBox}>
+                {checked[item.text] && <View style={styles.innerCircle} />}
+              </TouchableOpacity>
+              <Text style={styles.termsText}>{item.text}</Text>
+              {item.link && (
+                <TouchableOpacity onPress={() => Linking.openURL('https://example.com')}>
+                  <Text style={styles.linkText}>내용보기</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          ))}
+        </View>
+      </View>
 
       {/* 완료 버튼 */}
-      <TouchableOpacity style={styles.completeButton}>
+      <TouchableOpacity style={[styles.completeButton, { marginTop: 40 }]} onPress={handleSubmit}>
         <Text style={styles.completeButtonText}>완료</Text>
       </TouchableOpacity>
+
+      {/* 마지막 하단 여백 */}
+      <View style={{ height: 100 }} />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#FAFAFA",
+    flex: 1,  
+    backgroundColor: '#FAFAFA',
+  },
+  contentContainer: {
     padding: 20,
+    paddingBottom: 150,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
+  spacerLarge: {
+    height: 20,
   },
-  backButton: {
-    fontSize: 24,
+  spacerLargeMore: {
+    height: 35,
   },
-  headerTitle: {
-    fontSize: 20,
-    fontFamily: "OpenSans-Bold",
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 0,
+  },
+  backArrow: {
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  title: {
+    fontSize: 23,
+    color: '#424347',
+    fontFamily: 'OpenSans-Bold',
     marginLeft: 8,
+  },
+  formSection: {
+    gap: 4,
   },
   label: {
-    color: "#333",
-    marginBottom: 8,
-    fontFamily: "OpenSans-Regular",
-  },
-  input: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-    height: 50,
-    borderRadius: 8,
-    paddingHorizontal: 15,
     fontSize: 14,
-    color: "#262626",
+    color: '#3D3D3D',
+    fontFamily: 'OpenSans-Regular',
+    marginTop: 14,
+    marginBottom: 6,
   },
   inputRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
   },
-  disabledButton: {
-    marginLeft: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    backgroundColor: "#E0E0E0",
+  input230: {
+    width: 240,
+    height: 48,
+    backgroundColor: '#FFFFFF',
     borderRadius: 8,
-  },
-  disabledButtonText: {
-    color: "#9E9E9E",
+    paddingHorizontal: 16,
     fontSize: 14,
-    fontFamily: "OpenSans-Regular",
+    color: '#262626',
+    fontFamily: 'OpenSans-Regular',
   },
-  checkBoxRow: {
-    flexDirection: "row",
-    alignItems: "center",
+  inputFull: {
+    width: '100%',
+    height: 48,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    fontSize: 14,
+    color: '#262626',
+    marginBottom: 6,
+    fontFamily: 'OpenSans-Regular',
   },
-  checkBoxIcon: {
-    fontSize: 18,
+  buttonGray: {
+    width: 107,
+    height: 48,
+    backgroundColor: '#E7E7E7',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonTextGray: {
+    fontSize: 14,
+    color: '#909999',
+    fontFamily: 'OpenSans-Regular',
+  },
+  termsSection: {
+    marginTop: 40,
+    alignItems: 'center',
+    width: '100%',
+  },
+  termsDividerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 28,
+    width: '100%',
+  },
+  divider: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#D9D9DE',
+  },
+  termsTitle: {
+    fontSize: 14,
+    color: '#A3A3A3',
+    marginHorizontal: 8,
+    fontFamily: 'OpenSans-Regular',
+  },
+  termsContentWrapperImprovedAligned: {
+    width: '90%',
+    alignSelf: 'center',
+  },
+  termsRowLeftAligned: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  circleBox: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    borderWidth: 1,
+    borderColor: '#A3A3A3',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 8,
   },
-  checkBox: {
-    backgroundColor: "transparent",
-    borderWidth: 0,
-    padding: 0,
+  innerCircle: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#5DB374',
   },
-  checkBoxText: {
-    fontFamily: "OpenSans-Regular",
-    color: "#333",
+  termsText: {
+    fontSize: 13,
+    color: '#A3A3A3',
+    fontFamily: 'OpenSans-Regular',
+    marginRight: 6,
   },
   linkText: {
-    color: "#1976D2",
-    textDecorationLine: "underline",
+    fontSize: 14,
+    color: '#6686DC',
+    textDecorationLine: 'underline',
+    fontFamily: 'OpenSans-Regular',
   },
   completeButton: {
-    marginTop: 24,
-    backgroundColor: "#4CAF50",
-    paddingVertical: 12,
+    width: '100%',
+    height: 48,
+    backgroundColor: '#5DB374',
     borderRadius: 10,
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   completeButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontFamily: "OpenSans-Bold",
+    fontSize: 17,
+    color: '#FFFFFF',
+    fontFamily: 'OpenSans-Bold',
   },
 });
 
