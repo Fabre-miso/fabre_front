@@ -23,7 +23,7 @@ const PetEdit = ({ navigation }) => {
       headerTitleStyle: {
         fontSize: 20,
         fontWeight: '600',
-        paddingRight: 35,
+        paddingRight: 45,
       },
       headerShadowVisible: false,
     });
