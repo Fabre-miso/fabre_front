@@ -1,90 +1,130 @@
-# 💪 IdFiT: 지적·발달 장애인을 위한 건강관리 서비스
+# 🐍 Fabre
 
-> 개인 운동 추천과 건강관리, 보호자 모니터링을 위한 서비스입니다.
+> 양서파충류 양육 편의성 개선을 위한 애플리케이션
 
 ---
 
-## 🔍 IdFiT 소개
+## 📌 프로젝트 소개
 
-지적·발달 장애인을 위한 **개인 맞춤형 운동 추천과 건강관리**,  
-그리고 보호자를 위한 **모니터링 기능**을 제공하는 서비스입니다.
+**Fabre**는 양서파충류를 기르는 사용자들을 위해  
+양육 정보 관리, 병원 검색, AI 챗봇, 박람회 정보 등  
+다양한 기능을 제공하는 통합 관리 앱입니다.
 
 ---
 
 ## 🌟 주요 기능
 
-- 보호자 모니터링 서비스
-- 운동 및 스트레칭 추천
-- 하루 건강 체크
-- 약 복용 체크
+### 1️⃣ 양서파충류 특화 AI 챗봇
+양서파충류에 대한 **정보와 지식을 학습한 AI 챗봇**이  
+사용자의 질문에 맞춤형 답변을 제공합니다.  
+📸 ![AI 챗봇](./images/chatbot.png)
 
 ---
 
-## 👨‍👩‍👧‍👦 팀원 소개
-
-| PM/Design | FRONTEND | FRONTEND | BACKEND | BACKEND |
-|-----------|----------|----------|---------|---------|
-| 기하은    | 강지영   | 노은아   | 권민욱  | 박준범  |
-| ![](https://avatars.githubusercontent.com/github-id1) | ![](https://avatars.githubusercontent.com/github-id2) | ![](https://avatars.githubusercontent.com/github-id3) | ![](https://avatars.githubusercontent.com/github-id4) | ![](https://avatars.githubusercontent.com/github-id5) |
-| [GitHub](https://github.com/github-id1) | [GitHub](https://github.com/github-id2) | [GitHub](https://github.com/github-id3) | [GitHub](https://github.com/github-id4) | [GitHub](https://github.com/github-id5) |
+### 2️⃣ 양서파충류 양육 기록 및 모니터링  
+체중, 식사, 배변, 건강 상태 등 **기초 기록**을 남기고,  
+AI가 이를 분석하여 **양육 상태를 모니터링**합니다.  
+📸 ![모니터링](./images/monitoring.png)
 
 ---
 
-## ✨ 기술 스택
-
-| FRONTEND | BACKEND | 기타 |
-|----------|---------|------|
-| React, JavaScript, TailwindCSS, CSS3 | Spring, MySQL, Java | Notion, GitHub |
-
----
-
-## 🖥 주요 페이지 소개
-
-### 📄 About (소개 페이지)
-![About](./images/KakaoTalk_20250409_151606665.png)
+### 3️⃣ 커뮤니티  
+양육법, 건강 관리에 대한 **질문과 정보 공유**가 가능한 커뮤니티 기능  
+→ **경험자들과 소통**하며 실질적인 정보를 얻을 수 있어요!  
+📸 ![커뮤니티](./images/community.png)
 
 ---
 
-### 👤 회원가입 및 로그인
-
-- 이용약관 동의  
-- 보호자/자녀 정보 수집  
-- 고유키 발급 후 로그인 방식
-
-![회원가입](./images/KakaoTalk_20250409_151654087.png)  
-![정보수집1](./images/KakaoTalk_20250409_151709819.png)  
-![정보수집2](./images/KakaoTalk_20250409_151732001.png)  
-![고유키발급](./images/KakaoTalk_20250409_151634174.png)  
-![로그인](./images/KakaoTalk_20250409_151606665.png)
+### 4️⃣ 박람회 정보 제공  
+다양한 양서파충류 **박람회 일정, 장소, 입장료, 프로그램 정보** 확인 가능  
+📸 ![박람회](./images/expo.png)
 
 ---
 
-## 🛠 실행 방법
+### 5️⃣ 위치 기반 동물병원 검색  
+현 위치 기반으로 **근처 병원 검색 + 리뷰 확인** 가능  
+→ 다른 사용자의 평점과 후기를 보고 병원 선택 가능  
+📸 ![병원검색](./images/hospital.png)
 
-```bash
-# 클론
-git clone https://github.com/SKU-LikeLion12/hackathon_team4_front.git
+---
 
-# 설치
-cd hackathon_team4_front
-npm install
+### 6️⃣ 모프 계산기  
+부모 개체의 모프 정보를 입력하면  
+**자손에게 나타날 모프 종류와 확률** 계산!  
+📸 ![모프계산기](./images/morph.png)
 
-# 실행
-npm start
+---
+
+## 🛠 기술 스택
+
+| 분야 | 기술 |
+|------|------|
+| Frontend | React Native / Flutter |
+| Backend | Node.js / Firebase / Spring (선택 가능) |
+| DB | Firebase Realtime DB / MySQL |
+| AI | Python (LLM 활용), TensorFlow (모프 계산기 분석) |
+| 협업도구 | GitHub, Figma, Notion |
+
+---
+
+## 👥 팀 소개
+
+| 이름 | 역할 | 담당 |
+|------|------|------|
+| 김개발 | 팀장 | 기획, 일정관리 |
+| 이디자 | 디자이너 | UI/UX, 피그마 |
+| 박프론 | 프론트엔드 | 앱 기능 구현 |
+| 최백엔 | 백엔드 | 서버, DB 연결 |
+| 정AI | AI | 챗봇 및 모프 계산 |
+
+---
+
+## 📂 프로젝트 구조 예시
+
+```
+fabre/
+├── frontend/
+│   └── screens/
+├── backend/
+│   └── api/
+├── assets/
+│   └── images/
+├── docs/
+│   └── report.pdf
+└── README.md
 ```
 
 ---
 
-## 📄 문서
+## 🖥 실행 방법
 
-- [프로젝트 노션 링크](https://notion.so/...)  
-- [기획서 PDF 보기](./docs/project-plan.pdf)  
-- [기술 명세서 보기](./docs/tech-spec.md)
+```bash
+# 1. 레포 클론
+git clone https://github.com/your-team/fabre.git
+
+# 2. frontend 설치 및 실행
+cd frontend
+npm install
+npm start
+
+# 3. backend 실행
+cd backend
+npm install
+npm run dev
+```
+
+---
+
+## 📎 기타 문서
+
+- [기획서 (PDF)](./docs/기획서.pdf)
+- [Figma 시안](https://figma.com/your-project)
+- [Notion 협업 문서](https://notion.so/your-team)
 
 ---
 
 ## 📝 라이선스
 
-본 프로젝트는 MIT License를 따릅니다.  
-자세한 사항은 LICENSE 파일을 확인하세요.
+본 프로젝트는 MIT 라이선스를 따릅니다.  
+자세한 내용은 [LICENSE](./LICENSE) 파일을 참고하세요.
 
