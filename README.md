@@ -55,27 +55,33 @@ AI가 이를 분석하여 **양육 상태를 모니터링**합니다.
 
 ---
 
-## 🛠 기술 스택
+## ✨ 기술 스택
 
-| 분야 | 기술 |
-|------|------|
-| Frontend | React Native / Flutter |
-| Backend | Node.js / Firebase / Spring (선택 가능) |
-| DB | Firebase Realtime DB / MySQL |
-| AI | Python (LLM 활용), TensorFlow (모프 계산기 분석) |
-| 협업도구 | GitHub, Figma, Notion |
+| Frontend | Backend | Database | 기타 도구 |
+|----------|---------|----------|------------|
+| <img src="https://img.shields.io/badge/React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> | <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" /> | <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> | <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> |
+| <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" /> | <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" /> | <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" /> | <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" /> |
+| <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" /> | <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" /> | | <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" /> |
+
+
 
 ---
 
 ## 👥 팀 소개
 
-| 이름 | 역할 | 담당 |
-|------|------|------|
-| 김개발 | 팀장 | 기획, 일정관리 |
-| 이디자 | 디자이너 | UI/UX, 피그마 |
-| 박프론 | 프론트엔드 | 앱 기능 구현 |
-| 최백엔 | 백엔드 | 서버, DB 연결 |
-| 정AI | AI | 챗봇 및 모프 계산 |
+|  | 이름 | 역할 |
+|--|------|------|
+| <img src="./images/image.png" width="600"/> |  |  |
+
+| 이름 | 역할 | 주요 담당 |
+|------|------|-----------|
+| 🖥 이윤서 | 백엔드 | 서버, DB 구축 및 연동 |
+| 🎨 김지은 | 크리에이티브 | UI 디자인, 콘텐츠 제작, 기획 |
+| 💻 오인우 | 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
+| 💻 지소명 | 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
+
+
+
 
 ---
 
@@ -129,12 +135,6 @@ npm run dev
 자세한 내용은 [LICENSE](./LICENSE) 파일을 참고하세요.
 
 
-## ✨ 기술 스택
 
-| Frontend | Backend | Database | 기타 도구 |
-|----------|---------|----------|------------|
-| <img src="https://img.shields.io/badge/React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> | <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" /> | <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> | <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> |
-| <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" /> | <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" /> | <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" /> | <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" /> |
-| <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" /> | <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" /> | | <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" /> |
 
 
