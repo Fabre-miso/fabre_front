@@ -72,7 +72,7 @@ AI가 이를 분석하여 **양육 상태를 모니터링**합니다.
 
 | 이름 | 사진 | 역할 | 주요 담당 |
 |------|------|------|------------|
-| 이윤서 | <img src="./images/yoonseo.png" width="100"/> | 백엔드 | 서버, DB 구축 및 연동 |
+| 이윤서 | ![image](https://github.com/user-attachments/assets/3d19540b-9689-4a0b-ad88-0e8feecff598)| 백엔드 | 서버, DB 구축 및 연동 |
 | 김지은 | <img src="./images/jieun.png" width="100"/> | 크리에이티브 | UI 디자인, 콘텐츠 제작, 기획 |
 | 오인우 | <img src="./images/oinwoo.png" width="100"/> | 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
 | 지소명 | <img src="./images/jisomyung.png" width="100"/> | 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
