@@ -17,7 +17,8 @@
 ### 1️⃣ 양서파충류 특화 AI 챗봇
 양서파충류에 대한 **정보와 지식을 학습한 AI 챗봇**이  
 사용자의 질문에 맞춤형 답변을 제공합니다.  
-📸 ![AI 챗봇](./images/chatbot.png)
+📸![스크린샷 2025-03-12 180535](https://github.com/user-attachments/assets/ee9eb12b-66ba-48cb-bf86-b21a88e22bc7)
+
 
 ---
 
