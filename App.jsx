@@ -7,15 +7,10 @@ import { Image } from 'react-native';
 import HomeMain from './src/screens/HomeMain';
 import SignUpScreen from './src/screens/SignUpScreen';
 import LoginMain from './src/screens/LoginMain';
-
-import CommunityMain from './src/screens/CommunityMain';
-import CommunityDetail from './src/screens/CommunityDetail';
-
 import Fairscreen from './src/screens/Fairscreen';
-
 import Screen2 from './src/screens/Screen2';
 import Screen3 from './src/screens/Screen3';
-import Screen4 from './src/screens/Screen4';
+import MapScreen from './src/screens/MapScreen';
 import PetRegister from './src/screens/PetRegister';
 import PetEdit from './src/screens/PetEdit';
 import SettingScreen from './src/screens/SettingScreen';
@@ -24,7 +19,6 @@ const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const FairStack = createStackNavigator();
 
-// 박람회 탭 안에서 사용하는 Stack Navigator
 const FairStackScreen = () => {
   return (
     <FairStack.Navigator>
@@ -37,13 +31,20 @@ const FairStackScreen = () => {
   );
 };
 
-// 하단 탭 스크린 정의
+const MapStack = createStackNavigator();
+
+const MapStackScreen = () => (
+  <MapStack.Navigator>
+    <MapStack.Screen
+      name="MapScreen"
+      component={MapScreen}
+      options={{ headerShown: true }} 
+    />
+  </MapStack.Navigator>
+);
+
+
 const tabScreens = [
-  // {
-  //   name: '커뮤니티',
-  //   component: CommunityMain,
-  //   icon: require('./src/assets/image/screen1.png'),
-  // },
   {
     name: '박람회',
     component: FairStackScreen,
@@ -64,13 +65,12 @@ const tabScreens = [
     icon: require('./src/assets/image/screen3.png'),
   },
   {
-    name: '메뉴4',
-    component: Screen4,
-    icon: require('./src/assets/image/screen4.png'),
+    name: '병원지도',
+    component: MapStackScreen,
+    icon: require('./src/assets/image/MapScreen.png'),
   },
 ];
 
-// 하단 탭 내비게이션 정의
 const TabNavigation = () => {
   return (
     <BottomTab.Navigator
@@ -93,7 +93,6 @@ const TabNavigation = () => {
             const homeIcon = focused
               ? require('./src/assets/image/home_green.png')
               : require('./src/assets/image/home_gray.png');
-
             return (
               <Image
                 source={homeIcon}
@@ -127,34 +126,16 @@ const TabNavigation = () => {
   );
 };
 
-// 최상위 App 내비게이션
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginMain">
-        <Stack.Screen
-          name="LoginMain"
-          component={LoginMain}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignUpScreen"
-          component={SignUpScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="MainTabs"
-          component={TabNavigation}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="LoginMain" component={LoginMain} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MainTabs" component={TabNavigation} options={{ headerShown: false }} />
         <Stack.Screen name="PetRegister" component={PetRegister} />
         <Stack.Screen name="PetEdit" component={PetEdit} />
         <Stack.Screen name="SettingScreen" component={SettingScreen} />
-        <Stack.Screen
-          name="CommunityDetail"
-          component={CommunityDetail}
-          options={{ headerShown: false }}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );
