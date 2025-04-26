@@ -18,6 +18,9 @@ import WeightDetailScreen from './src/screens/WeightDetailScreen';
 import FeedDetailScreen from './src/screens/FeedDetailScreen'; 
 import PoopDetailScreen from './src/screens/PoopDetailScreen';
 import HospitalDetailScreen from './src/screens/HospitalDetailScreen';
+import MorfCalcMainScreen from './src/screens/MorfCalcMainScreen/MorfCalcMainScreen'; 
+import MorfCalcResultScreen from './src/screens/MorfCalcMainScreen/MorfCalcResultScreen';
+
 
 const BottomTab = createBottomTabNavigator();
 
@@ -37,8 +40,8 @@ const tabScreens = [
     component: HomeMain,
   },
   {
-    name: '메뉴3',
-    component: Screen3,
+    name: '모프계산기',
+    component: MorfCalcMainScreen,
     icon: require('./src/assets/image/screen3.png'),
   },
   {
@@ -119,6 +122,8 @@ const App = () => {
         <Stack.Screen name="FeedScreen" component={FeedDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PoopScreen" component={PoopDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="HospitalDetailScreen" component={HospitalDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MorfCalcMainScreen" component={MorfCalcMainScreen} />
+        <Stack.Screen name="MorfCalcResultScreen" component={MorfCalcResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
