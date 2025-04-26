@@ -8,30 +8,61 @@ import HomeMain from './src/screens/HomeMain';
 import SignUpScreen from './src/screens/SignUpScreen';
 import LoginMain from './src/screens/LoginMain';
 import MonitoringMainScreen from './src/screens/MonitoringMainScreen';
+import Fairscreen from './src/screens/Fairscreen';
+import Screen2 from './src/screens/Screen2';
 import Screen3 from './src/screens/Screen3';
-import Screen4 from './src/screens/Screen4';
+import MapScreen from './src/screens/MapScreen';
 import PetRegister from './src/screens/PetRegister';
 import PetEdit from './src/screens/PetEdit';
 import SettingScreen from './src/screens/SettingScreen';
 import CommunityStack from './src/navigation/CommunityStack';
 import WeightDetailScreen from './src/screens/WeightDetailScreen';
-import FeedDetailScreen from './src/screens/FeedDetailScreen'; 
+import FeedDetailScreen from './src/screens/FeedDetailScreen';
 import PoopDetailScreen from './src/screens/PoopDetailScreen';
 import HospitalDetailScreen from './src/screens/HospitalDetailScreen';
-import MorfCalcMainScreen from './src/screens/MorfCalcMainScreen/MorfCalcMainScreen'; 
+import MorfCalcMainScreen from './src/screens/MorfCalcMainScreen/MorfCalcMainScreen';
 import MorfCalcResultScreen from './src/screens/MorfCalcMainScreen/MorfCalcResultScreen';
 
-
 const BottomTab = createBottomTabNavigator();
+const FairStack = createStackNavigator();
+
+const FairStackScreen = () => {
+  return (
+    <FairStack.Navigator>
+      <FairStack.Screen
+        name="Fairscreen"
+        component={Fairscreen}
+        options={{ headerShown: true }}
+      />
+    </FairStack.Navigator>
+  );
+};
+
+const MapStack = createStackNavigator();
+
+const MapStackScreen = () => (
+  <MapStack.Navigator>
+    <MapStack.Screen
+      name="MapScreen"
+      component={MapScreen}
+      options={{ headerShown: true }}
+    />
+  </MapStack.Navigator>
+);
 
 const tabScreens = [
+  {
+    name: '박람회',
+    component: FairStackScreen,
+    icon: require('./src/assets/image/Fairscreen.png'),
+  },
   {
     name: '커뮤니티',
     component: CommunityStack,
     icon: require('./src/assets/image/screen1.png'),
   },
   {
-    name: '메뉴2',
+    name: '모니터링',
     component: MonitoringMainScreen,
     icon: require('./src/assets/image/screen2.png'),
   },
@@ -45,9 +76,9 @@ const tabScreens = [
     icon: require('./src/assets/image/screen3.png'),
   },
   {
-    name: '메뉴4',
-    component: Screen4,
-    icon: require('./src/assets/image/screen4.png'),
+    name: '병원지도',
+    component: MapStackScreen,
+    icon: require('./src/assets/image/MapScreen.png'),
   },
 ];
 

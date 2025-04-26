@@ -1,97 +1,138 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🐍 Fabre
 
-# Getting Started
+> 양서파충류 양육 편의성 개선을 위한 애플리케이션
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 📌 프로젝트 소개
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+**Fabre**는 양서파충류를 기르는 사용자들을 위해  
+양육 정보 관리, 병원 검색, AI 챗봇, 박람회 정보 등  
+다양한 기능을 제공하는 통합 관리 앱입니다.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
+## 🌟 주요 기능
+
+### 1️⃣ 양서파충류 특화 AI 챗봇
+양서파충류에 대한 **정보와 지식을 학습한 AI 챗봇**이  
+사용자의 질문에 맞춤형 답변을 제공합니다.  
+
+
+
+---
+
+### 2️⃣ 양서파충류 양육 기록 및 모니터링  
+체중, 식사, 배변, 건강 상태 등 **기초 기록**을 남기고,  
+AI가 이를 분석하여 **양육 상태를 모니터링**합니다.  
+
+
+---
+
+### 3️⃣ 커뮤니티  
+양육법, 건강 관리에 대한 **질문과 정보 공유**가 가능한 커뮤니티 기능  
+→ **경험자들과 소통**하며 실질적인 정보를 얻을 수 있어요!  
+
+
+---
+
+### 4️⃣ 박람회 정보 제공  
+다양한 양서파충류 **박람회 일정, 장소, 입장료, 프로그램 정보** 확인 가능  
+
+
+---
+
+### 5️⃣ 위치 기반 동물병원 검색  
+현 위치 기반으로 **근처 병원 검색 + 리뷰 확인** 가능  
+→ 다른 사용자의 평점과 후기를 보고 병원 선택 가능  
+
+
+---
+
+### 6️⃣ 모프 계산기  
+부모 개체의 모프 정보를 입력하면  
+**자손에게 나타날 모프 종류와 확률** 계산!  
+
+
+---
+
+## ✨ 기술 스택
+
+| Frontend | Backend | Database | 기타 도구 |
+|----------|---------|----------|------------|
+| <img src="https://img.shields.io/badge/React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> | <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" /> | <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /> | <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> |
+| <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" /> | <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" /> | <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" /> | <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" /> |
+| <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" /> | <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" /> | | <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" /> |
+
+
+
+---
+
+
+## 👥 팀원 소개
+
+| 이름 | 사진 | 역할 | 주요 담당 |
+|------|------|------|------------|
+| 이윤서 |![스크린샷 2025-04-09 153953](https://github.com/user-attachments/assets/36ff8a40-7bd2-4504-ac65-c65909c70eb7)| 백엔드 | 서버, DB 구축 및 연동 |
+| 김지은 |![스크린샷 2025-04-09 154308](https://github.com/user-attachments/assets/ea3dc3c9-9253-4309-83fb-ae5408780cc9)| 크리에이티 | UI 디자인, 콘텐츠 제작, 기획|
+| 오인우 |![스크린샷 2025-04-09 154318](https://github.com/user-attachments/assets/8bb3abab-0efa-4784-8eb4-90b4b220497a)| 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
+| 지소명 | ![image](https://github.com/user-attachments/assets/9eaa385a-ac4f-43f0-a840-27e3609abd2e)| 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
+
+
+
+
+---
+
+## 📂 프로젝트 구조 예시
+
+```
+fabre/
+├── frontend/
+│   └── screens/
+├── backend/
+│   └── api/
+├── assets/
+│   └── images/
+├── docs/
+│   └── report.pdf
+└── README.md
+```
+
+---
+
+## 🖥 실행 방법
+
+```bash
+# 1. 레포 클론
+git clone https://github.com/your-team/fabre.git
+
+# 2. frontend 설치 및 실행
+cd frontend
+npm install
 npm start
 
-# OR using Yarn
-yarn start
+# 3. backend 실행
+cd backend
+npm install
+npm run dev
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 📎 기타 문서
 
-### Android
+- [기획서 (PDF)](./docs/기획서.pdf)
+- [Figma 시안](https://figma.com/your-project)
+- [Notion 협업 문서](https://notion.so/your-team)
 
-```sh
-# Using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## 📝 라이선스
 
-### iOS
+본 프로젝트는 MIT 라이선스를 따릅니다.  
+자세한 내용은 [LICENSE](./LICENSE) 파일을 참고하세요.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
 
-```sh
-bundle install
-```
 
-Then, and every time you update your native dependencies, run:
 
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
