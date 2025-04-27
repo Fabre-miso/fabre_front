@@ -9,12 +9,11 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import LoginMain from './src/screens/LoginMain';
 import MonitoringMainScreen from './src/screens/MonitoringMainScreen';
 import Fairscreen from './src/screens/Fairscreen';
-import Screen2 from './src/screens/Screen2';
-import Screen3 from './src/screens/Screen3';
 import MapScreen from './src/screens/MapScreen';
 import PetRegister from './src/screens/PetRegister';
 import PetEdit from './src/screens/PetEdit';
 import SettingScreen from './src/screens/SettingScreen';
+import ChatbotScreen from './src/screens/ChatbotScreen';
 import CommunityStack from './src/navigation/CommunityStack';
 import WeightDetailScreen from './src/screens/WeightDetailScreen';
 import FeedDetailScreen from './src/screens/FeedDetailScreen';
@@ -52,19 +51,14 @@ const MapStackScreen = () => (
 
 const tabScreens = [
   {
-    name: '박람회',
-    component: FairStackScreen,
-    icon: require('./src/assets/image/Fairscreen.png'),
-  },
-  {
     name: '커뮤니티',
     component: CommunityStack,
-    icon: require('./src/assets/image/screen1.png'),
+    icon: require('./src/assets/image/community.png'),
   },
   {
     name: '모니터링',
     component: MonitoringMainScreen,
-    icon: require('./src/assets/image/screen2.png'),
+    icon: require('./src/assets/image/monitoring.png'),
   },
   {
     name: '홈',
@@ -73,7 +67,7 @@ const tabScreens = [
   {
     name: '모프계산기',
     component: MorfCalcMainScreen,
-    icon: require('./src/assets/image/screen3.png'),
+    icon: require('./src/assets/image/mofcalc.png'),
   },
   {
     name: '병원지도',
@@ -149,6 +143,7 @@ const App = () => {
         <Stack.Screen name="PetRegister" component={PetRegister} />
         <Stack.Screen name="PetEdit" component={PetEdit} />
         <Stack.Screen name="SettingScreen" component={SettingScreen} />
+        <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ presentation: 'modal', headerShown: false }} />
         <Stack.Screen name="WeightScreen" component={WeightDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="FeedScreen" component={FeedDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PoopScreen" component={PoopDetailScreen} options={{ headerShown: false }} />
