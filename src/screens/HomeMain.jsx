@@ -11,7 +11,6 @@ const HomeMain = ({ navigation }) => {
     { name: '뿌기', image: require('../assets/image/user_pet1.png') },
     { name: '따기', image: require('../assets/image/user_pet2.png') },
     { name: '꾸기', image: require('../assets/image/user_pet3.png') },
-    // { name: '등록하기', image: require('../assets/image/plus.png'), isRegister: true },
   ];
 
   return (
@@ -20,7 +19,6 @@ const HomeMain = ({ navigation }) => {
       {/* 상단 바 */}
       <View style={styles.header}>
         <Image source={require('../assets/image/Fabrelogo.png')} style={styles.FabreLogo} resizeMode="contain" />
-
         <View style={styles.iconContainer}>
           <Image source={require('../assets/image/search.png')} style={styles.icon} resizeMode="contain" />
           <Image source={require('../assets/image/bell.png')} style={styles.icon} resizeMode="contain" />
@@ -40,7 +38,7 @@ const HomeMain = ({ navigation }) => {
           </TouchableOpacity>
         ))}
 
-        {/* 등록하기 버튼 별도 렌더링 */}
+        {/* 등록하기 버튼 */}
         <TouchableOpacity
           style={styles.pet}
           onPress={() => navigation.navigate('PetRegister')}
@@ -50,17 +48,18 @@ const HomeMain = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* 선택된 펫 메인 이미지 영역 */}
+      {/* 메인 펫 사진 및 이름 */}
       <View style={styles.mainPetContainer}>
-      <Image source={selectedPet.image} style={styles.mainPetImage} resizeMode="cover" />
-      <Text style={styles.mainPetName}>{selectedPet.name}</Text>
+        <Image source={selectedPet.image} style={styles.mainPetImage} resizeMode="cover" />
+        <Text style={styles.mainPetName}>{selectedPet.name}</Text>
 
-      <TouchableOpacity style={styles.detailButton}>
-        <Text style={styles.detailButtonText}>자세히보기</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.detailButton}>
+          <Text style={styles.detailButtonText}>자세히보기</Text>
+        </TouchableOpacity>
 
+        {/* 하단 메뉴 */}
         <View style={styles.menuContainer}>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('ChatbotScreen')}>
             <Image source={require('../assets/image/chatIcon.png')} style={styles.menuIcon} />
             <Text style={styles.menuText}>챗봇</Text>
           </TouchableOpacity>
@@ -80,6 +79,8 @@ const HomeMain = ({ navigation }) => {
     </View>
   );
 };
+
+export default HomeMain;
 
 const styles = StyleSheet.create({
   container: {
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuIcon: {
-    width: 40,
-    height: 40,
+    width: 55,
+    height: 55,
   },
   circleImage: {
     width: 60,
@@ -177,16 +178,9 @@ const styles = StyleSheet.create({
   menuItem: {
     alignItems: 'center',
   },
-  menuIcon: {
-    width: 55,
-    height: 55,
-  },
   menuText: {
     marginTop: 10,
     color: '#ABABAB',
     fontSize: 12,
   },
-  
 });
-
-export default HomeMain;

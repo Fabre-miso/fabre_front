@@ -7,15 +7,21 @@ import { Image } from 'react-native';
 import HomeMain from './src/screens/HomeMain';
 import SignUpScreen from './src/screens/SignUpScreen';
 import LoginMain from './src/screens/LoginMain';
+import MonitoringMainScreen from './src/screens/MonitoringMainScreen';
 import Fairscreen from './src/screens/Fairscreen';
-import Screen2 from './src/screens/Screen2';
-import Screen3 from './src/screens/Screen3';
 import MapScreen from './src/screens/MapScreen';
 import PetRegister from './src/screens/PetRegister';
 import PetEdit from './src/screens/PetEdit';
 import SettingScreen from './src/screens/SettingScreen';
+import ChatbotScreen from './src/screens/ChatbotScreen';
+import CommunityStack from './src/navigation/CommunityStack';
+import WeightDetailScreen from './src/screens/WeightDetailScreen';
+import FeedDetailScreen from './src/screens/FeedDetailScreen';
+import PoopDetailScreen from './src/screens/PoopDetailScreen';
+import HospitalDetailScreen from './src/screens/HospitalDetailScreen';
+import MorfCalcMainScreen from './src/screens/MorfCalcMainScreen/MorfCalcMainScreen';
+import MorfCalcResultScreen from './src/screens/MorfCalcMainScreen/MorfCalcResultScreen';
 
-const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const FairStack = createStackNavigator();
 
@@ -38,33 +44,35 @@ const MapStackScreen = () => (
     <MapStack.Screen
       name="MapScreen"
       component={MapScreen}
-      options={{ headerShown: true }} 
+      options={{ headerShown: true }}
     />
   </MapStack.Navigator>
 );
 
-
 const tabScreens = [
   {
-    name: '박람회',
-    component: FairStackScreen,
-    icon: require('./src/assets/image/Fairscreen.png'),
+    name: '커뮤니티',
+    component: CommunityStack,
+    icon: require('./src/assets/image/community.png'),
   },
   {
-    name: '메뉴2',
-    component: Screen2,
-    icon: require('./src/assets/image/screen2.png'),
+    name: '모니터링',
+    component: MonitoringMainScreen,
+    icon: require('./src/assets/image/monitoring.png'),
   },
   {
     name: '홈',
     component: HomeMain,
   },
   {
-    name: '메뉴3',
-    component: Screen3,
-    icon: require('./src/assets/image/screen3.png'),
+    name: '모프계산기',
+    component: MorfCalcMainScreen,
+    icon: require('./src/assets/image/mofcalc.png'),
   },
   {
+    name: '병원지도',
+    component: MapStackScreen,
+    icon: require('./src/assets/image/MapScreen.png'),
     name: '병원지도',
     component: MapStackScreen,
     icon: require('./src/assets/image/MapScreen.png'),
@@ -93,6 +101,7 @@ const TabNavigation = () => {
             const homeIcon = focused
               ? require('./src/assets/image/home_green.png')
               : require('./src/assets/image/home_gray.png');
+
             return (
               <Image
                 source={homeIcon}
@@ -101,7 +110,6 @@ const TabNavigation = () => {
               />
             );
           }
-
           return (
             <Image
               source={tab.icon}
@@ -126,6 +134,8 @@ const TabNavigation = () => {
   );
 };
 
+const Stack = createStackNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -136,6 +146,13 @@ const App = () => {
         <Stack.Screen name="PetRegister" component={PetRegister} />
         <Stack.Screen name="PetEdit" component={PetEdit} />
         <Stack.Screen name="SettingScreen" component={SettingScreen} />
+        <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="WeightScreen" component={WeightDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="FeedScreen" component={FeedDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PoopScreen" component={PoopDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HospitalDetailScreen" component={HospitalDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MorfCalcMainScreen" component={MorfCalcMainScreen} />
+        <Stack.Screen name="MorfCalcResultScreen" component={MorfCalcResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
