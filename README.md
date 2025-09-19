@@ -73,10 +73,10 @@ AI가 이를 분석하여 **양육 상태를 모니터링**합니다.
 
 | 이름 | 사진 | 역할 | 주요 담당 |
 |------|------|------|------------|
-| 이윤서 |![스크린샷 2025-04-09 153953](https://github.com/user-attachments/assets/36ff8a40-7bd2-4504-ac65-c65909c70eb7)| 백엔드 | 서버, DB 구축 및 연동 |
-| 김지은 |![스크린샷 2025-04-09 154308](https://github.com/user-attachments/assets/ea3dc3c9-9253-4309-83fb-ae5408780cc9)| 크리에이티 | UI 디자인, 콘텐츠 제작, 기획|
-| 오인우 |![스크린샷 2025-04-09 154318](https://github.com/user-attachments/assets/8bb3abab-0efa-4784-8eb4-90b4b220497a)| 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
-| 지소명 | ![image](https://github.com/user-attachments/assets/9eaa385a-ac4f-43f0-a840-27e3609abd2e)| 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
+| 이윤서 |<img width="1024" height="1024" alt="ChatGPT Image 2025년 9월 19일 오후 05_25_04" src="https://github.com/user-attachments/assets/5900901c-cd99-4915-ad32-e14bb0bf96ed" />| 백엔드 | 서버, DB 구축 및 연동 |
+| 김지은 |<img width="1024" height="1024" alt="ChatGPT Image 2025년 9월 19일 오후 05_25_10" src="https://github.com/user-attachments/assets/45ecb157-9576-43f1-93f2-180b1a0bd710" />| 크리에이티 | UI 디자인, 콘텐츠 제작, 기획|
+| 오인우 |<img width="1024" height="1024" alt="ChatGPT Image 2025년 9월 19일 오후 05_25_17" src="https://github.com/user-attachments/assets/6f058629-9b2a-4487-8efb-7177a86999a1" />| 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
+| 지소명 |<img width="1024" height="1024" alt="ChatGPT Image 2025년 9월 19일 오후 05_25_22" src="https://github.com/user-attachments/assets/96c05d80-5a57-4c87-a4ab-418de996bc06" />| 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
 
 
 
