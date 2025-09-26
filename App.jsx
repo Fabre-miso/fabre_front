@@ -1,10 +1,11 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 
 import HomeMain from './src/screens/HomeMain';
+import PetInfoScreen from './src/screens/PetInfoScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import LoginMain from './src/screens/LoginMain';
 import MonitoringMainScreen from './src/screens/MonitoringMainScreen';
@@ -22,22 +23,45 @@ import HospitalDetailScreen from './src/screens/HospitalDetailScreen';
 import MorfCalcMainScreen from './src/screens/MorfCalcMainScreen/MorfCalcMainScreen';
 import MorfCalcResultScreen from './src/screens/MorfCalcMainScreen/MorfCalcResultScreen';
 
+const RootStack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
+const HomeStack = createStackNavigator();
 const FairStack = createStackNavigator();
-
-const FairStackScreen = () => {
-  return (
-    <FairStack.Navigator>
-      <FairStack.Screen
-        name="Fairscreen"
-        component={Fairscreen}
-        options={{ headerShown: true }}
-      />
-    </FairStack.Navigator>
-  );
-};
-
 const MapStack = createStackNavigator();
+
+/** ------------------------------
+ *  Nested Stacks
+ *  ------------------------------ */
+const HomeStackScreen = () => (
+  <HomeStack.Navigator>
+    <HomeStack.Screen
+      name="HomeMain"
+      component={HomeMain}
+      options={{ headerShown: false }}
+    />
+    <HomeStack.Screen
+      name="PetInfoScreen"
+      component={PetInfoScreen}
+      options={{
+        title: '반려동물 정보',
+        headerShown: true,
+        headerTitleAlign: 'center',
+        headerStyle: { height: 60 },
+        headerTitleStyle: { marginLeft: 0, paddingLeft: 0 },
+      }}
+    />
+  </HomeStack.Navigator>
+);
+
+const FairStackScreen = () => (
+  <FairStack.Navigator>
+    <FairStack.Screen
+      name="Fairscreen"
+      component={Fairscreen}
+      options={{ headerShown: true }}
+    />
+  </FairStack.Navigator>
+);
 
 const MapStackScreen = () => (
   <MapStack.Navigator>
@@ -49,111 +73,91 @@ const MapStackScreen = () => (
   </MapStack.Navigator>
 );
 
+/** ------------------------------
+ *  Bottom Tabs
+ *  ------------------------------ */
 const tabScreens = [
-  {
-    name: '커뮤니티',
-    component: CommunityStack,
-    icon: require('./src/assets/image/community.png'),
-  },
-  {
-    name: '모니터링',
-    component: MonitoringMainScreen,
-    icon: require('./src/assets/image/monitoring.png'),
-  },
-  {
-    name: '홈',
-    component: HomeMain,
-  },
-  {
-    name: '모프계산기',
-    component: MorfCalcMainScreen,
-    icon: require('./src/assets/image/mofcalc.png'),
-  },
-  {
-    name: '병원지도',
-    component: MapStackScreen,
-    icon: require('./src/assets/image/MapScreen.png'),
-    name: '병원지도',
-    component: MapStackScreen,
-    icon: require('./src/assets/image/MapScreen.png'),
-  },
+  { name: '커뮤니티', component: CommunityStack, icon: require('./src/assets/image/community.png') },
+  { name: '모니터링', component: MonitoringMainScreen, icon: require('./src/assets/image/monitoring.png') },
+  { name: '홈', component: HomeStackScreen }, // ✅ 홈 탭은 스택으로
+  { name: '모프계산기', component: MorfCalcMainScreen, icon: require('./src/assets/image/mofcalc.png') },
+  { name: '병원지도', component: MapStackScreen, icon: require('./src/assets/image/MapScreen.png') },
 ];
 
-const TabNavigation = () => {
-  return (
-    <BottomTab.Navigator
-      initialRouteName="홈"
-      screenOptions={({ route }) => ({
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          height: 90,
-          borderTopWidth: 0,
-          elevation: 0,
-          backgroundColor: '#fff',
-        },
-        tabBarIcon: ({ color, focused }) => {
-          const tab = tabScreens.find(t => t.name === route.name);
-          const isHome = route.name === '홈';
+const TabNavigation = () => (
+  <BottomTab.Navigator
+    initialRouteName="홈"
+    screenOptions={({ route }) => ({
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        height: 90,
+        borderTopWidth: 0,
+        elevation: 0,
+        backgroundColor: '#fff',
+      },
+      tabBarIcon: ({ color, focused }) => {
+        const tab = tabScreens.find(t => t.name === route.name);
+        const isHome = route.name === '홈';
+        if (!tab) return null;
 
-          if (!tab) return null;
-
-          if (isHome) {
-            const homeIcon = focused
-              ? require('./src/assets/image/home_green.png')
-              : require('./src/assets/image/home_gray.png');
-
-            return (
-              <Image
-                source={homeIcon}
-                style={{ width: 60, height: 60, marginTop: 10 }}
-                resizeMode="contain"
-              />
-            );
-          }
+        if (isHome) {
+          const homeIcon = focused
+            ? require('./src/assets/image/home_green.png')
+            : require('./src/assets/image/home_gray.png');
           return (
             <Image
-              source={tab.icon}
-              style={{ width: 24, height: 24, tintColor: color, marginTop: 35 }}
+              source={homeIcon}
+              style={{ width: 60, height: 60, marginTop: 10 }}
               resizeMode="contain"
             />
           );
-        },
-        tabBarActiveTintColor: '#68936F',
-        tabBarInactiveTintColor: 'gray',
-      })}
-    >
-      {tabScreens.map(screen => (
-        <BottomTab.Screen
-          key={screen.name}
-          name={screen.name}
-          component={screen.component}
-          options={{ headerShown: false }}
-        />
-      ))}
-    </BottomTab.Navigator>
-  );
-};
+        }
 
-const Stack = createStackNavigator();
+        return (
+          <Image
+            source={tab.icon}
+            style={{ width: 24, height: 24, tintColor: color, marginTop: 35 }}
+            resizeMode="contain"
+          />
+        );
+      },
+      tabBarActiveTintColor: '#68936F',
+      tabBarInactiveTintColor: 'gray',
+    })}
+  >
+    {tabScreens.map(screen => (
+      <BottomTab.Screen
+        key={screen.name}
+        name={screen.name}
+        component={screen.component}
+        options={{ headerShown: false }}
+      />
+    ))}
+  </BottomTab.Navigator>
+);
 
+/** ------------------------------
+ *  Root App
+ *  ------------------------------ */
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginMain">
-        <Stack.Screen name="LoginMain" component={LoginMain} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="MainTabs" component={TabNavigation} options={{ headerShown: false }} />
-        <Stack.Screen name="PetRegister" component={PetRegister} />
-        <Stack.Screen name="PetEdit" component={PetEdit} />
-        <Stack.Screen name="SettingScreen" component={SettingScreen} />
-        <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ presentation: 'modal', headerShown: false }} />
-        <Stack.Screen name="WeightScreen" component={WeightDetailScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="FeedScreen" component={FeedDetailScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="PoopScreen" component={PoopDetailScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="HospitalDetailScreen" component={HospitalDetailScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="MorfCalcMainScreen" component={MorfCalcMainScreen} />
-        <Stack.Screen name="MorfCalcResultScreen" component={MorfCalcResultScreen} />
-      </Stack.Navigator>
+      <RootStack.Navigator initialRouteName="LoginMain">
+        <RootStack.Screen name="LoginMain" component={LoginMain} options={{ headerShown: false }} />
+        <RootStack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
+        <RootStack.Screen name="MainTabs" component={TabNavigation} options={{ headerShown: false }} />
+        <RootStack.Screen name="PetRegister" component={PetRegister} />
+        <RootStack.Screen name="PetEdit" component={PetEdit} />
+        <RootStack.Screen name="SettingScreen" component={SettingScreen} />
+        <RootStack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ presentation: 'modal', headerShown: false }} />
+        <RootStack.Screen name="WeightScreen" component={WeightDetailScreen} options={{ headerShown: false }} />
+        <RootStack.Screen name="FeedScreen" component={FeedDetailScreen} options={{ headerShown: false }} />
+        <RootStack.Screen name="PoopScreen" component={PoopDetailScreen} options={{ headerShown: false }} />
+        <RootStack.Screen name="HospitalDetailScreen" component={HospitalDetailScreen} options={{ headerShown: false }} />
+        <RootStack.Screen name="MorfCalcMainScreen" component={MorfCalcMainScreen} />
+        <RootStack.Screen name="MorfCalcResultScreen" component={MorfCalcResultScreen} />
+        {/* PetInfoScreen은 HomeStack에만 등록 */}
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

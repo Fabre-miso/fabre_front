@@ -13,6 +13,9 @@ const HomeMain = ({ navigation }) => {
     { name: '꾸기', image: require('../assets/image/user_pet3.png') },
   ];
 
+  // 루트 스택으로 보내야 하는 화면 이동 헬퍼
+  const goRoot = (name, params) => navigation.getParent()?.navigate(name, params);
+
   return (
     <View style={styles.container}>
 
@@ -38,10 +41,10 @@ const HomeMain = ({ navigation }) => {
           </TouchableOpacity>
         ))}
 
-        {/* 등록하기 버튼 */}
+        {/* 등록하기 버튼 (루트 스택 화면) */}
         <TouchableOpacity
           style={styles.pet}
-          onPress={() => navigation.navigate('PetRegister')}
+          onPress={() => goRoot('PetRegister')}
         >
           <Image source={require('../assets/image/plus.png')} style={[styles.menuIcon, styles.circleImage]} resizeMode="cover" />
           <Text style={styles.petName}>등록하기</Text>
@@ -53,23 +56,28 @@ const HomeMain = ({ navigation }) => {
         <Image source={selectedPet.image} style={styles.mainPetImage} resizeMode="cover" />
         <Text style={styles.mainPetName}>{selectedPet.name}</Text>
 
-        <TouchableOpacity style={styles.detailButton}>
+        {/* ✅ 홈 스택 내부 화면으로 이동 */}
+        <TouchableOpacity
+          style={styles.detailButton}
+          onPress={() => navigation.navigate('PetInfoScreen', { pet: selectedPet })}
+        >
           <Text style={styles.detailButtonText}>자세히보기</Text>
         </TouchableOpacity>
 
         {/* 하단 메뉴 */}
         <View style={styles.menuContainer}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('ChatbotScreen')}>
+          {/* 루트 스택 화면들은 goRoot 사용 */}
+          <TouchableOpacity style={styles.menuItem} onPress={() => goRoot('ChatbotScreen')}>
             <Image source={require('../assets/image/chatIcon.png')} style={styles.menuIcon} />
             <Text style={styles.menuText}>챗봇</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('PetEdit')}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => goRoot('PetEdit')}>
             <Image source={require('../assets/image/editIcon.png')} style={styles.menuIcon} />
             <Text style={styles.menuText}>수정하기</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('SettingScreen')}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => goRoot('SettingScreen')}>
             <Image source={require('../assets/image/settingIcon.png')} style={styles.menuIcon} />
             <Text style={styles.menuText}>환경설정</Text>
           </TouchableOpacity>
