@@ -73,10 +73,11 @@ AI가 이를 분석하여 **양육 상태를 모니터링**합니다.
 
 | 이름 | 사진 | 역할 | 주요 담당 |
 |------|------|------|------------|
-| 이윤서 |![스크린샷 2025-04-09 153953](https://github.com/user-attachments/assets/36ff8a40-7bd2-4504-ac65-c65909c70eb7)| 백엔드 | 서버, DB 구축 및 연동 |
-| 김지은 |![스크린샷 2025-04-09 154308](https://github.com/user-attachments/assets/ea3dc3c9-9253-4309-83fb-ae5408780cc9)| 크리에이티 | UI 디자인, 콘텐츠 제작, 기획|
-| 오인우 |![스크린샷 2025-04-09 154318](https://github.com/user-attachments/assets/8bb3abab-0efa-4784-8eb4-90b4b220497a)| 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
-| 지소명 | ![image](https://github.com/user-attachments/assets/9eaa385a-ac4f-43f0-a840-27e3609abd2e)| 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
+| 이윤서 | <img src="https://github.com/user-attachments/assets/4bc2b507-9a8e-450b-b5e7-40e652969ea1" width="120"/> | 백엔드 | 서버, DB 구축 및 연동 |
+| 김지은 | <img src="https://github.com/user-attachments/assets/206f56f5-5512-4c85-9e66-04e1a89c9b6d" width="120"/> | 크리에이티 | UI 디자인, 콘텐츠 제작, 기획 |
+| 오인우 | <img src="https://github.com/user-attachments/assets/95500279-008f-41de-bcf2-d3ca9c38b715" width="120"/> | 프론트엔드 | 앱 인터페이스, 사용자 기능 구현 |
+| 지소명 | <img src="https://github.com/user-attachments/assets/20f64406-8910-47a6-a3fb-319b5a423a01" width="120"/> | 프론트엔드 | 화면 구성, 상태 관리, 연결 테스트 |
+
 
 
 
