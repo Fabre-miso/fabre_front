@@ -103,32 +103,6 @@ fabre/
 
 ---
 
-## 🖥 실행 방법
-
-```bash
-# 1. 레포 클론
-git clone https://github.com/your-team/fabre.git
-
-# 2. frontend 설치 및 실행
-cd frontend
-npm install
-npm start
-
-# 3. backend 실행
-cd backend
-npm install
-npm run dev
-```
-
----
-
-## 📎 기타 문서
-
-- [기획서 (PDF)](./docs/기획서.pdf)
-- [Figma 시안](https://figma.com/your-project)
-- [Notion 협업 문서](https://notion.so/your-team)
-
----
 
 ## 📝 라이선스
 
